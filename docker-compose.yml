@@ -1,11 +1,14 @@
-version: '3'
+version: "3.3"
 
 services:
-  app:
-    build: .
+  node-media-server:
+    image: illuspas/node-media-server
+    container_name: node-media-server
+    restart: always
     ports:
-      - "3000:3000"
+      - "1936:1935"
+      - "8001:8000"
     volumes:
-      - ./media:/app/media:ro
-      - ./index:/app/index:rw
-      - ./logs:/app/logs:rw
+      - /volume1/docker/node-media-server/config:/app/config
+      - /volume1/docker/node-media-server/www:/app/www
+      - /volume1/docker/node-media-server/media:/app/media
